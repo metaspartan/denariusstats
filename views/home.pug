@@ -1,0 +1,79 @@
+extends layout
+
+block content
+  .logo(align='left')
+    img(src='../img/denarius.png', border='0', align='left')
+  .mainh(align='right') Denarius.host
+  .slogan(align='right') Denarius powered statistics node in NodeJS.
+  hr
+  .row
+    .col-md-4(align='center')
+      | Current Block Height
+      .statxl.animated.flipInX #{blockcount}
+    .col-md-4(align='center')
+      | Denarius Hybrid Masternodes Online: 
+      .statxl.animated.flipInX #{count}
+    .col-md-4(align='center')
+      | Total DNR Locked in Masternodes: 
+      .statxl.animated.flipInX #{totallockedup}
+  hr
+  .row
+    .col-md-4(align='center')
+      | Current Denarius in Circulation: 
+      .statlg.animated.flipInX #{totalsupply}
+      | DNR
+    .col-md-4(align='center')
+      | Denarius Network Hashrate: 
+      .statlg.animated.flipInX #{hashespersec} 
+      | GigaHashes per sec
+    .col-md-4(align='center')
+      | Max Denarius Supply:
+      .statlg.animated.flipInX 10,000,000
+      | DNR
+  hr
+  .row
+    .col-md-3(align='center')
+      | Denarius Current USD Price: 
+      .statmd.animated.flipInX $#{usd}
+    .col-md-3(align='center')
+      | Denarius Current BTC Price: 
+      .statmd.animated.flipInX #{btc}
+    .col-md-3(align='center')
+      | Current Masternode USD Price: 
+      .statmd.animated.flipInX $#{totalmnusd}
+    .col-md-3(align='center')
+      | Current Masternode BTC Price: 
+      .statmd.animated.flipInX #{totalmnbtc} BTC
+  hr
+  .row
+    .col-md-4(align='center')
+      | Total Market Cap:
+      .statmd.animated.flipInX $#{marketcap}
+    .col-md-4(align='center')
+      | 24hr Daily Volume:
+      .statmd.animated.flipInX $#{dailyvol}
+    .col-md-4(align='center')
+      | DNR Masternode Cost:
+      .statmd.animated.flipInX 5000 DNR
+  hr
+  .row
+    .col-md-4(align='center')
+      | DNR PoW Difficulty:
+      .statmd.animated.flipInX #{powdiff}
+    .col-md-4(align='center')
+      | DNR PoS Difficulty:
+      .statmd.animated.flipInX #{posdiff}
+    .col-md-4(align='center')
+      | DNR PoS Network Weight:
+      .statmd.animated.flipInX #{posweight}
+  hr
+  .row
+    .col-md-4(align='center')
+      | DNR PoS Interest:
+      .statmd.animated.flipInX 6%
+    .col-md-4(align='center')
+      | DNR MN Interest:
+      .statmd.animated.flipInX 33%
+    .col-md-4(align='center')
+      | Total MN Percentage of Supply:
+      .statmd.animated.flipInX #{mnsupplypercent}%
