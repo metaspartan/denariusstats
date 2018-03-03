@@ -22,7 +22,7 @@ const chalk = require('chalk');
 /**
  * Load environment variables from .env file, where Denariusd is configured
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({ path: '.env' });
 
 /**
  * Controllers (route handlers).
