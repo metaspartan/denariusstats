@@ -68,12 +68,33 @@ block content
       .statmd.animated.flipInX #{posweight}
   hr
   .row
-    .col-md-4(align='center')
+    .col-md-3(align='center')
       | DNR PoS Interest:
       .statmd.animated.flipInX 6%
-    .col-md-4(align='center')
+    .col-md-3(align='center')
       | DNR MN Interest:
       .statmd.animated.flipInX 33%
-    .col-md-4(align='center')
+    .col-md-3(align='center')
       | Total MN Percentage of Supply:
       .statmd.animated.flipInX #{mnsupplypercent}%
+    .col-md-3(align='center')
+      | Days since Genesis:
+      .statmd.animated.flipInX #{genesistime}
+  hr
+  .row
+    .col-md-4(align='center')
+      | Current Denarius Client Version:
+      .statmd.animated.flipInX #{clientversion}
+    .col-md-4(align='center')
+      | Current Denarius Protocol:
+      .statmd.animated.flipInX #{clientproto}
+    .col-md-4(align='center')
+      | Connections to this node:
+      .statmd.animated.flipInX #{connections}
+  hr
+  .mainh(align='center') Denarius Hybrid Masternode List
+  hr
+  each masternodelist, index in masternodelists
+    .row
+      .col-md-12(align='center')
+        .list= index

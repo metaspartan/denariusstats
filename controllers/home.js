@@ -2,6 +2,7 @@
 
 const bitcoin = require('bitcoin');
 const unirest = require('unirest');
+const moment = require('moment');
 
 // all config options are optional
 var client = new bitcoin.Client({
@@ -33,6 +34,10 @@ exports.index = function (req, res) {
 
         //Hashes per sec
         client.getHashesPerSec(function (error, hashespersec, resHeaders) {
+          if (error) return console.log(error);
+
+        //GetInfo
+        client.getInfo(function (error, getinfo, resHeaders) {
             if (error) return console.log(error);
 
         //Mining info
@@ -65,10 +70,40 @@ exports.index = function (req, res) {
 
                         var totalmnpercent = (totallocked / totalsupply) * 100;
                         
-                        res.render('home', { title: 'Denarius Statistics', count: count, blockcount: parseFloat(blockcount).toLocaleString('en-US'), masternodelists: masternodelists, powdiff: parseFloat(powdiff).toFixed(2), posdiff: parseFloat(posdiff).toFixed(8), posweight: parseFloat(posweight).toFixed(2), dailyvol: parseFloat(dailyvolume).toLocaleString('en-US', { minimumFractionDigits: 2 }), marketcap: parseFloat(marketcap).toLocaleString('en-US', { minimumFractionDigits: 2 }), usd: parseFloat(usdprice).toFixed(2), btc: parseFloat(btcprice).toFixed(8), totallockedup: parseFloat(totallocked).toLocaleString('en-US'), mnsupplypercent: parseFloat(totalmnpercent).toFixed(2), hashespersec: parseFloat(hashespersec).toLocaleString('en-US'), totalmnusd: parseFloat(totalmncostusd).toLocaleString('en-US', { minimumFractionDigits: 2 }), totalmnbtc: parseFloat(totalmncostbtc).toFixed(2), totalmnvalue: totalmnvalue, totalsupply: parseFloat(totalsupply).toLocaleString('en-US') });
+                        var genesistime = moment("20170614", "YYYYMMDD").fromNow();
+
+                        var clientversion = getinfo['version'];
+                        var clientproto = getinfo['protocolversion'];
+                        var connections = getinfo['connections'];
+                        
+                        res.render('home', {
+                          title: 'Denarius Statistics',
+                          clientversion: clientversion,
+                          clientproto: clientproto,
+                          connections: connections,
+                          genesistime: genesistime,
+                          count: count,
+                          blockcount: parseFloat(blockcount).toLocaleString('en-US'),
+                          masternodelists: masternodelists,
+                          powdiff: parseFloat(powdiff).toFixed(2),
+                          posdiff: parseFloat(posdiff).toFixed(8),
+                          posweight: parseFloat(posweight).toFixed(2),
+                          dailyvol: parseFloat(dailyvolume).toLocaleString('en-US', { minimumFractionDigits: 2 }),
+                          marketcap: parseFloat(marketcap).toLocaleString('en-US', { minimumFractionDigits: 2 }),
+                          usd: parseFloat(usdprice).toFixed(2),
+                          btc: parseFloat(btcprice).toFixed(8),
+                          totallockedup: parseFloat(totallocked).toLocaleString('en-US'),
+                          mnsupplypercent: parseFloat(totalmnpercent).toFixed(2),
+                          hashespersec: parseFloat(hashespersec).toLocaleString('en-US'),
+                          totalmnusd: parseFloat(totalmncostusd).toLocaleString('en-US', { minimumFractionDigits: 2 }),
+                          totalmnbtc: parseFloat(totalmncostbtc).toFixed(2),
+                          totalmnvalue: totalmnvalue,
+                          totalsupply: parseFloat(totalsupply).toLocaleString('en-US')
+                        });
                     });
             });
             });
+        });
         });
     });
     /**
