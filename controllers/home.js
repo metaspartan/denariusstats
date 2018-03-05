@@ -52,6 +52,16 @@ exports.index = function (req, res) {
         //List Masternodes
         client.masterNode('list', function (err, masternodelists, resHeaders) {
             if (err) return console.log(err);
+            
+                unirest.get("https://api1.barterdexapi.net/swapspercoin.php?coin=DNR")
+                    .headers({ 'Accept': 'application/json' })
+                    .end(function (results) {
+                        var requests = results.body;
+                        
+                        var totalswaps = results.body[0]['totalswaps'];                        
+                        var bobswaps = results.body[0]['bobswaps'];
+                        var aliceswaps = results.body[0]['aliceswaps'];
+                        var totalasvol = results.body[0]['totalvolume'];
 
                 unirest.get("https://api.coinmarketcap.com/v1/ticker/denarius-dnr/")
                     .headers({ 'Accept': 'application/json' })
@@ -79,6 +89,10 @@ exports.index = function (req, res) {
                         res.render('home', {
                           title: 'Denarius Statistics',
                           clientversion: clientversion,
+                          totalswaps: totalswaps,
+                          bobswaps: bobswaps,
+                          aliceswaps: aliceswaps,
+                          totalasvol: parseFloat(totalasvol).toFixed(4),
                           clientproto: clientproto,
                           connections: connections,
                           genesistime: genesistime,
@@ -100,6 +114,7 @@ exports.index = function (req, res) {
                           totalmnvalue: totalmnvalue,
                           totalsupply: parseFloat(totalsupply).toLocaleString('en-US')
                         });
+                    });
                     });
             });
             });

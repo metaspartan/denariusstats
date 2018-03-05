@@ -46,6 +46,20 @@ block content
       .statmd.animated.flipInX #{totalmnbtc} BTC
   hr
   .row
+    .col-md-3(align='center')
+      | Total DNR Atomic Swaps: 
+      .statmd.animated.flipInX #{totalswaps}
+    .col-md-3(align='center')
+      | Total DNR Atomic Volume: 
+      .statmd.animated.flipInX #{totalasvol}
+    .col-md-3(align='center')
+      | Total DNR "Bob" Atomic Swaps: 
+      .statmd.animated.flipInX #{bobswaps}
+    .col-md-3(align='center')
+      | Total DNR "Alice" Atomic Swaps: 
+      .statmd.animated.flipInX #{aliceswaps}
+  hr
+  .row
     .col-md-4(align='center')
       | Total Market Cap:
       .statmd.animated.flipInX $#{marketcap}
@@ -78,7 +92,7 @@ block content
       | Total MN Percentage of Supply:
       .statmd.animated.flipInX #{mnsupplypercent}%
     .col-md-3(align='center')
-      | Days since Genesis:
+      | Time since Genesis:
       .statmd.animated.flipInX #{genesistime}
   hr
   .row
