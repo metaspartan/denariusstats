@@ -50,8 +50,8 @@ exports.index = function (req, res) {
             var blockcount = mininginfo['blocks'];
 
         //List Masternodes
-        client.masterNode('list', function (err, masternodelists, resHeaders) {
-            if (err) return console.log(err);
+        client.masterNode('list', 'pubkey', function (err, masternodelists, resHeaders) {
+            if (err) return console.log(err, client.masterNode);
             
                 unirest.get("https://api1.barterdexapi.net/swapspercoin.php?coin=DNR")
                     .headers({ 'Accept': 'application/json' })
@@ -86,6 +86,8 @@ exports.index = function (req, res) {
                         var clientproto = getinfo['protocolversion'];
                         var connections = getinfo['connections'];
                         
+                        var masternodeadds = masternodelists;
+                        
                         res.render('home', {
                           title: 'Denarius Statistics',
                           clientversion: clientversion,
@@ -99,6 +101,7 @@ exports.index = function (req, res) {
                           count: count,
                           blockcount: parseFloat(blockcount).toLocaleString('en-US'),
                           masternodelists: masternodelists,
+                          masternodeadds: masternodeadds,
                           powdiff: parseFloat(powdiff).toFixed(2),
                           posdiff: parseFloat(posdiff).toFixed(8),
                           posweight: parseFloat(posweight).toFixed(2),

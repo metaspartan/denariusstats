@@ -80,8 +80,21 @@ hr {
   border-radius: 5px;
   color: #8a8a8a;
   margin: 5px;
-  margin-left: 25%;
-  margin-right: 25%;
+  padding: 5px;
+  margin-left: 15%;
+  margin-right: 15%;
+  text-decoration: none;
+}
+
+.list:hover {
+  background-color: #262626;
+  color: #fff8ba;
+  text-decoration: none;
+}
+
+.list a, a:hover, a:active, a:visited {
+  color: #fff8ba;
+  text-decoration: none;
 }
 
 .list-inline > li a {

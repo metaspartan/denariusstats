@@ -108,7 +108,8 @@ block content
   hr
   .mainh(align='center') Denarius Hybrid Masternode List
   hr
-  each masternodelist, index in masternodelists
+  each pubkey, index in masternodeadds
     .row
       .col-md-12(align='center')
-        .list= index
+        a(href='https://denariusexplorer.org/address/' + pubkey, target='_blank')
+          .list= pubkey
