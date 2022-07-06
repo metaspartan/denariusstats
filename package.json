@@ -27,7 +27,7 @@
     "express-status-monitor": "^0.1.5",
     "express-validator": "^3.1.2",
     "lusca": "^1.4.1",
-    "moment": "^2.21.0",
+    "moment": "^2.29.4",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.11.0",
     "pug": "^2.0.0-beta6",
